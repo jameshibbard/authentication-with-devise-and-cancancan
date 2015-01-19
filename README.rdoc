@@ -1,0 +1,5 @@
+== README
+
+This is the code for a beginner level tutorial I wrote on how to set up authentication (verifying who you are) and authorization (what you are permitted to do) using Ruby 2.2, Rails 4.2 and two popular Ruby gems: Devise and cancancan.
+
+The tutorial can be found here: http://hibbard.eu/authentication-with-devise-and-cancancan-in-rails-4-2
