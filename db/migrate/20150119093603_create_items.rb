@@ -4,10 +4,9 @@ class CreateItems < ActiveRecord::Migration
       t.string :name
       t.text :description
       t.decimal :price, precision: 5, scale: 2
-      t.belongs_to :user, index: true
+      t.references :user, index: true, foreign_key: true
 
       t.timestamps null: false
     end
-    add_foreign_key :items, :users
   end
 end

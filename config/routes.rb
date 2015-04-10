@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, :controllers => {:confirmations => 'confirmations'}
+
   scope "/admin" do
     resources :users
+  end
+
+  devise_scope :user do
+    patch "/confirm" => "confirmations#confirm"
   end
 
   resources :items
