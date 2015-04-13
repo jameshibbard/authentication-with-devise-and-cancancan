@@ -1,20 +1,21 @@
 Rails.application.routes.draw do
-  devise_for :users, :controllers => {:confirmations => 'confirmations'}
+  devise_for :users, controllers: { confirmations: 'confirmations' }
 
-  scope "/admin" do
+  root 'welcome#index'
+
+  namespace :admin do
+    root 'users#index'
+
     resources :users
   end
 
   devise_scope :user do
-    patch "/confirm" => "confirmations#confirm"
+    patch :confirm, to: 'confirmations#confirm'
   end
-
-  resources :items
-
-  resources :roles
 
   authenticated :user do
-    root :to => 'items#index', as: :authenticated_root
+    root 'items#index', as: :authenticated_root
   end
-  root :to => 'welcome#index'
+
+  resources :items, :roles
 end
