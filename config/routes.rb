@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    root 'users#index'
+    root 'welcome#index'
 
     resources :users
   end

@@ -1,8 +1,8 @@
 class AdminAbility
   include CanCan::Ability
-  
+
   def initialize(user)
-    if user.role? :admin
+    if user.admin?
       can :manage, :all
     end
   end
