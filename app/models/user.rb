@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   belongs_to :role
-  has_many :items
+  has_many :items, :dependent => :destroy
   validates_presence_of :name
   before_save :assign_role
 
