@@ -4,10 +4,10 @@ one:
   name: MyString
   description: MyText
   price: 9.99
-  user_id: 
+  user_id: 1
 
 two:
   name: MyString
   description: MyText
   price: 9.99
-  user_id: 
+  user_id: 2

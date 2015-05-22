@@ -2,6 +2,7 @@ require 'test_helper'
 
 class RolesControllerTest < ActionController::TestCase
   setup do
+    sign_in users(:one)
     @role = roles(:one)
   end
 
