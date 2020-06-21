@@ -1,25 +1,27 @@
-<%= form_for(@role) do |f| %>
-  <% if @role.errors.any? %>
+<%= form_with(model: role, local: true) do |form| %>
+  <% if role.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@role.errors.count, "error") %> prohibited this role from being saved:</h2>
+      <h2><%= pluralize(role.errors.count, "error") %> prohibited this role from being saved:</h2>
 
       <ul>
-      <% @role.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% role.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
   </div>
+
   <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_field :description %>
+    <%= form.label :description %>
+    <%= form.text_field :description %>
   </div>
+
   <div class="actions">
-    <%= f.submit %>
+    <%= form.submit %>
   </div>
 <% end %>

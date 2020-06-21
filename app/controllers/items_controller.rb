@@ -1,69 +1,53 @@
+# frozen_string_literal: true
+
 class ItemsController < ApplicationController
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
   load_and_authorize_resource
 
   # GET /items
-  # GET /items.json
   def index
+    @items = Item.all
   end
 
   # GET /items/1
-  # GET /items/1.json
-  def show
-  end
+  def show; end
 
   # GET /items/new
-  def new
-    @item = Item.new
-  end
+  def new; end
 
   # GET /items/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /items
-  # POST /items.json
   def create
     @item.user_id = current_user.id
 
-    respond_to do |format|
-      if @item.save
-        format.html { redirect_to @item, notice: 'Item was successfully created.' }
-        format.json { render :show, status: :created, location: @item }
-      else
-        format.html { render :new }
-        format.json { render json: @item.errors, status: :unprocessable_entity }
-      end
+    if @item.save
+      redirect_to @item, notice: 'Item was successfully created.'
+    else
+      render :new
     end
   end
 
   # PATCH/PUT /items/1
-  # PATCH/PUT /items/1.json
   def update
-    respond_to do |format|
-      if @item.update(item_params)
-        format.html { redirect_to @item, notice: 'Item was successfully updated.' }
-        format.json { render :show, status: :ok, location: @item }
-      else
-        format.html { render :edit }
-        format.json { render json: @item.errors, status: :unprocessable_entity }
-      end
+    if @item.update(item_params)
+      redirect_to @item, notice: 'Item was successfully updated.'
+    else
+      render :edit
     end
   end
 
   # DELETE /items/1
-  # DELETE /items/1.json
   def destroy
     @item.destroy
-    respond_to do |format|
-      format.html { redirect_to items_url, notice: 'Item was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to items_url, notice: 'Item was successfully destroyed.'
   end
 
   private
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def item_params
-      params.require(:item).permit(:name, :description, :price, :user_id)
-    end
+
+  # Only allow a trusted parameter "white list" through.
+  def item_params
+    params.require(:item).permit(:name, :description, :price, :user_id)
+  end
 end

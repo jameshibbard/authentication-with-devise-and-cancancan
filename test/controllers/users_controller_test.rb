@@ -1,55 +1,48 @@
 require 'test_helper'
 
-class UsersControllerTest < ActionController::TestCase
+class UsersControllerTest < ActionDispatch::IntegrationTest
   setup do
-    sign_in users(:one)
     @user = users(:one)
   end
 
   test "should get index" do
-    get :index
+    get users_url
     assert_response :success
-    assert_not_nil assigns(:users)
   end
 
   test "should get new" do
-    get :new
+    get new_user_url
     assert_response :success
   end
 
-test "should create user" do
-  assert_difference('User.count') do
-    post :create, user: {
-      name: @user.name,
-      role_id: @user.role_id,
-      email: "test@test.com",
-      password: "11111111",
-      password_confirmation: "11111111"
-    }
+  test "should create user" do
+    assert_difference('User.count') do
+      post users_url, params: { user: { name: @user.name, role_id: @user.role_id } }
+    end
+
+    assert_redirected_to user_url(User.last)
   end
-  assert_redirected_to user_path(assigns(:user))
-end
 
   test "should show user" do
-    get :show, id: @user
+    get user_url(@user)
     assert_response :success
   end
 
   test "should get edit" do
-    get :edit, id: @user
+    get edit_user_url(@user)
     assert_response :success
   end
 
   test "should update user" do
-    patch :update, id: @user, user: { name: @user.name, role_id: @user.role_id }
-    assert_redirected_to user_path(assigns(:user))
+    patch user_url(@user), params: { user: { name: @user.name, role_id: @user.role_id } }
+    assert_redirected_to user_url(@user)
   end
 
   test "should destroy user" do
     assert_difference('User.count', -1) do
-      delete :destroy, id: @user
+      delete user_url(@user)
     end
 
-    assert_redirected_to users_path
+    assert_redirected_to users_url
   end
 end

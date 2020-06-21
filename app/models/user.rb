@@ -1,26 +1,31 @@
-class User < ActiveRecord::Base
+# frozen_string_literal: true
+
+class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :validatable, :trackable
+
   belongs_to :role
-  has_many :items, :dependent => :destroy
-  validates_presence_of :name
+  has_many :items, dependent: :destroy
+
+  validates :name, presence: true
+
   before_save :assign_role
 
   def assign_role
-    self.role = Role.find_by name: "Regular" if self.role.nil?
+    self.role = Role.find_by name: 'Regular' if role.nil?
   end
 
   def admin?
-    self.role.name == "Admin"
+    role.name == 'Admin'
   end
 
   def seller?
-    self.role.name == "Seller"
+    role.name == 'Seller'
   end
 
   def regular?
-    self.role.name == "Regular"
+    role.name == 'Regular'
   end
 end

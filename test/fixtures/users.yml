@@ -1,13 +1,9 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  id: 1
-  name: Bob
-  role_id: 1
-  email: a@test.com
+  name: MyString
+  role: one
 
 two:
-  id: 2
-  name: Bill
-  role_id: 2
-  email: b@test.com
+  name: MyString
+  role: two
