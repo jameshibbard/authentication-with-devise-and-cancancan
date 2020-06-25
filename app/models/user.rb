@@ -6,7 +6,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :trackable
 
-  belongs_to :role
+  belongs_to :role, optional: true
   has_many :items, dependent: :destroy
 
   validates :name, presence: true
