@@ -8,7 +8,7 @@ ruby '2.7.1'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'cancancan', '~> 3.1'
 gem 'devise', '~> 4.7'
-gem 'puma', '~> 4.1'
+gem 'puma', '~> 4.3'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.2'
 gem 'sass-rails', '>= 6'
 gem 'sqlite3', '~> 1.4'
