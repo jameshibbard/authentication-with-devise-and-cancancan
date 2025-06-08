@@ -11,12 +11,12 @@
 
   <p>
     <strong>Price:</strong>
-    <%= item.price %>
+    <%= "%.2f" % item.price %>
   </p>
 
   <p>
-    <strong>User:</strong>
-    <%= item.user_id %>
+    <strong>Seller:</strong>
+    <%= item.user.name %>
   </p>
 
 </div>

@@ -18,7 +18,9 @@
 
   <div>
     <%= form.label :role_id, style: "display: block" %>
-    <%= form.text_field :role_id %>
+    <%= collection_select(
+      :user, :role_id, Role.all, :id, :name, { prompt: true }
+    ) %>
   </div>
 
   <div>
