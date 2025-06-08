@@ -1,0 +1,12 @@
+<% content_for :title, "Editing role" %>
+
+<h1>Editing role</h1>
+
+<%= render "form", role: @role %>
+
+<br>
+
+<div>
+  <%= link_to "Show this role", @role %> |
+  <%= link_to "Back to roles", roles_path %>
+</div>
