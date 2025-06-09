@@ -1,4 +1,10 @@
 <%= render @role %>
+<div class="user-meta">
+  <p>
+    <strong>Associated users:</strong>
+    <%= @associated_users %>
+  </p>
+</div>
 
 <div>
   <%= link_to "Edit this role", edit_role_path(@role) %> |
