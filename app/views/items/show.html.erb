@@ -1,8 +1,15 @@
 <%= render @item %>
 
 <div>
-  <%= link_to "Edit this item", edit_item_path(@item) %> |
+  <% if can? :update, @item %>
+    <%= link_to "Edit this item", edit_item_path(@item) %> |
+  <% end %>
   <%= link_to "Back to items", items_path %>
-
-  <%= button_to "Destroy this item", @item, method: :delete %>
+  <% if can? :destroy, @item %>
+    <%=
+      button_to "Destroy this item",
+      @item,
+      data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }
+    %>
+  <% end %>
 </div>

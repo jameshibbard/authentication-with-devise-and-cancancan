@@ -11,4 +11,6 @@
   <% end %>
 </div>
 
-<%= link_to "New item", new_item_path %>
+<% if can? :create, Item %>
+  <%= link_to "New item", new_item_path %>
+<% end %>
