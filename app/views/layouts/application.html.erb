@@ -23,6 +23,40 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="container">
+      <header class="site-header">
+        <div class="branding">
+          <%= link_to "MyStore", root_path %>
+        </div>
+          <div class="header-right">
+          <nav class="user-nav">
+            <% if user_signed_in? %>
+              Signed in as <%= current_user.email %> |
+              <%= link_to "Edit profile", edit_user_registration_path %> |
+              <%= link_to "Sign out", destroy_user_session_path, data: { "turbo-method": :delete } %>
+            <% else %>
+              <%= link_to "Sign up", new_user_registration_path %> or
+              <%= link_to "sign in", new_user_session_path %>
+            <% end %>
+          </nav>
+
+          <nav class="admin-nav">
+            <% if user_signed_in? %>
+              <%= link_to "Items", items_path %> |
+              <%= link_to "Users", users_path %> |
+              <%= link_to "Roles", roles_path %>
+            <% end %>
+          </nav>
+        </div>
+      </header>
+
+      <% flash.each do |name, msg| %>
+        <%= content_tag :div, msg, class: "flash #{name}" %>
+      <% end %>
+
+      <main>
+        <%= yield %>
+      </main>
+    </div>
   </body>
 </html>

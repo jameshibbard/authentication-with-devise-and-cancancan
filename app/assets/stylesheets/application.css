@@ -8,3 +8,345 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+
+/* stylelint-disable selector-id-pattern, selector-class-pattern */
+
+:root {
+  --color-text: #222;
+  --color-bg: #fff;
+  --color-surface: #f9f9f9;
+  --color-border: #ddd;
+  --color-input-border: #ccc;
+  --color-button-bg: #467fcf;
+  --color-button-hover: #3a6ebf;
+  --color-button-text: #fff;
+  --color-link: #00e;
+  --color-error-bg: #f8d7da;
+  --color-error-border: #f5c2c7;
+  --color-error-text: #842029;
+  --color-error-input-bg: #fff5f5;
+  --color-error-input-border: #dc3545;
+  --color-body-bg: #f0f2f5;
+  --color-container-border: #e0e0e0;
+  --color-container-shadow: rgb(0 0 0 / 5%);
+  --color-danger: #c00;
+  --color-danger-hover: #900;
+  --color-flash-notice-text: #2e7d32;
+  --color-flash-notice-bg: #e2f0d9;
+  --color-flash-notice-border: #c8e6c9;
+  --color-flash-alert-text: #856404;
+  --color-flash-alert-bg: #fff3cd;
+  --color-flash-alert-border: #ffeeba;
+  --color-gray-light: #ccc;
+}
+
+html {
+  overflow-y: scroll;
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 2rem;
+
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--color-text);
+
+  background-color: var(--color-body-bg);
+}
+
+a,
+a:visited {
+  color: var(--color-link);
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem;
+
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-container-border);
+  border-radius: 4px;
+  box-shadow: 0 1px 3px var(--color-container-shadow);
+}
+
+form {
+  margin-bottom: 1rem;
+  padding: 1.5rem;
+
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+}
+
+form label {
+  margin-bottom: 0.3rem;
+  font-weight: bold;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="password"] {
+  width: 100%;
+  margin-bottom: 1.25rem;
+  padding: 0.75rem;
+
+  border: 1px solid var(--color-input-border);
+  border-radius: 4px;
+}
+
+form input[type="checkbox"]{
+  margin-bottom: 1.25rem;
+}
+
+form input[type="submit"] {
+  cursor: pointer;
+
+  padding: 0.75rem 1.5rem;
+
+  font-weight: bold;
+  color: var(--color-button-text);
+
+  background-color: var(--color-button-bg);
+  border: none;
+  border-radius: 4px;
+}
+
+form input[type="submit"]:hover {
+  background-color: var(--color-button-hover);
+}
+
+form select {
+  width: 100%;
+  margin-bottom: 1.25rem;
+  padding: 0.75rem;
+
+  font-family: inherit;
+  font-size: 1rem;
+
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-input-border);
+  border-radius: 4px;
+}
+
+input:has(+ br + em) {
+  margin-bottom: 0 !important;
+}
+
+form textarea {
+  resize: vertical;
+
+  width: 100%;  height: 8rem;
+  margin-bottom: 1.25rem;
+  padding: 0.75rem;
+
+  font-family: inherit;
+  font-size: 1rem;
+
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-input-border);
+  border-radius: 4px;
+}
+
+input:has(+ br + em) + br + em {
+  display: block;
+  margin-bottom: 1.25rem;
+}
+
+form.button_to {
+  all: unset;
+  display: inline;
+}
+
+form.button_to button {
+  all: unset;
+
+  cursor: pointer;
+
+  display: inline-block;
+
+  margin-left: 0.2rem;
+
+  color: var(--color-danger);
+  text-decoration: underline;
+}
+
+form.button_to::before {
+  content: "|";
+  margin: 0;
+}
+
+form.button_to:first-child::before {
+  content: none;
+}
+
+#error_explanation {
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+
+  color: var(--color-error-text);
+
+  background-color: var(--color-error-bg);
+  border: 1px solid var(--color-error-border);
+  border-radius: 4px;
+}
+
+#error_explanation h2 {
+  margin-top: 0;
+  font-size: 1.25rem;
+}
+
+#error_explanation ul {
+  margin: 0.5rem 0 0;
+  padding-left: 1.25rem;
+}
+
+#error_explanation li {
+  margin-bottom: 0.25rem;
+}
+
+.field_with_errors {
+  display: contents;
+}
+
+.field_with_errors input {
+  background-color: var(--color-error-input-bg);
+  border-color: var(--color-error-input-border);
+}
+
+.flash {
+  margin: 1rem 0 0;
+  padding: 1rem;
+
+  font-weight: bold;
+
+  opacity: 1;
+  border-radius: 4px;
+
+  transition: opacity 1.5s ease;
+}
+
+.flash.opacity-0 {
+  opacity: 0;
+}
+
+.flash.notice {
+  color: var(--color-flash-notice-text);
+  background-color: var(--color-flash-notice-bg);
+  border: 1px solid var(--color-flash-notice-border);
+}
+
+.flash.alert {
+  color: var(--color-flash-alert-text);
+  background-color: var(--color-flash-alert-bg);
+  border: 1px solid var(--color-flash-alert-border);
+}
+
+.flash.error {
+  color: var(--color-error-text);
+  background-color: var(--color-error-bg);
+  border: 1px solid var(--color-error-border);
+}
+
+.site-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+
+  border-bottom: 1px solid var(--color-border);
+}
+
+.header-right {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  align-items: flex-end;
+}
+
+.user-nav,
+.admin-nav {
+  font-size: 0.9rem;
+  text-align: right;
+}
+
+.admin-nav {
+  margin-top: 0.8rem;
+}
+
+.branding a {
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.branding {
+  position: relative;
+
+  font-family: Georgia, serif;
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  text-shadow: 1px 1px 0 var(--color-gray-light);
+}
+
+.branding::after {
+  content: "™";
+
+  position: absolute;
+  top: 10px;
+  right: -1.5rem;
+
+  font-size: 1.5rem;
+}
+
+.user-meta {
+  margin: 0 0 0.8rem;
+}
+
+.user-meta p {
+  margin: 0.1rem 0;
+}
+
+div[id^="item_"] p,
+div[id^="user_"] p,
+div[id^="role_"] p {
+  margin: 0.1rem 0;
+}
+
+div[id^="item_"],
+div[id^="user_"],
+div[id^="role_"] {
+  margin: 1rem 0 0.5rem;
+}
+
+#items > div[id^="item_"],
+#roles > div[id^="role_"],
+#users > div[id^="user_"] {
+  margin-bottom: 0.5rem;
+  padding: 1rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-input-border);
+}
+
+#items > div[id^="item_"] p,
+#roles > div[id^="role_"] p,
+#users > div[id^="user_"] p {
+  margin: 0.25rem 0;
+}
+
+#items > div[id^="item_"] + p,
+#roles > div[id^="role_"] + p,
+#users > div[id^="user_"] + p {
+  margin-top: 0;
+  margin-bottom: 2rem;
+  font-size: 0.9rem;
+}
