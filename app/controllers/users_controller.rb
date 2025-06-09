@@ -33,8 +33,14 @@ class UsersController < ApplicationController
 
   # PATCH/PUT /users/1
   def update
-    if @user.update(user_params)
-      redirect_to @user, notice: "User was successfully updated.", status: :see_other
+    successfully_updated = if needs_password?(@user, user_params)
+      @user.update(user_params)
+    else
+      @user.update_without_password(user_params)
+    end
+
+    if successfully_updated
+      redirect_to @user, notice: "User was successfully updated."
     else
       render :edit, status: :unprocessable_entity
     end
@@ -52,8 +58,18 @@ class UsersController < ApplicationController
       @user = User.find(params.expect(:id))
     end
 
+    def needs_password?(_user, params)
+      params[:password].present?
+    end
+
     # Only allow a list of trusted parameters through.
     def user_params
-      params.expect(user: [ :name, :role_id ])
+      params.expect(user: [
+        :name,
+        :email,
+        :role_id,
+        :password,
+        :password_confirmation
+      ])
     end
 end

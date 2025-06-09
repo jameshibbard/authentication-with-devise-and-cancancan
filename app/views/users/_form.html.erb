@@ -16,11 +16,26 @@
     <%= form.text_field :name %>
   </div>
 
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+  </div>
+
   <div>
     <%= form.label :role_id, style: "display: block" %>
     <%= collection_select(
       :user, :role_id, Role.all, :id, :name, { prompt: true }
     ) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :password %>
+    <%= form.password_field :password, placeholder: "Leave blank if unchanged" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :password_confirmation %>
+    <%= form.password_field :password_confirmation %>
   </div>
 
   <div>
