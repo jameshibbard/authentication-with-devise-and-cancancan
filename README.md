@@ -1,4 +1,4 @@
-# Authentication with Devise and cancancan in Rails
+# Authentication with Devise and cancancan in Rails (MySQL Version)
 
 This is the code for a tutorial on how to set up authentication (verifying who you are) and authorization (what you are permitted to do) using Ruby 3.4, Rails 8.0.2 and two popular Ruby gems: [Devise](https://github.com/heartcombo/devise) and [CanCanCan](https://github.com/CanCanCommunity/cancancan).
 
@@ -14,11 +14,12 @@ The tutorial can be found here: https://hibbard.eu/authentication-with-devise-an
 1. Clone repo: `git clone git@github.com:jameshibbard/authentication-with-devise-and-cancancan.git`
 2. Change into directory: `cd authentication-with-devise-and-cancancan`
 3. Install gems: `bundle install`
-4. Create database: `rake db:create`
-5. Create tables: `rake db:migrate`
-6. Seed database: `rake db:seed`
-7. Start the server: `rails s`
-8. Visit http://localhost:3000/ and log in with any of the users defined in the [seeds file](https://github.com/jameshibbard/authentication-with-devise-and-cancancan/blob/master/db/seeds.rb).
+4. Edit `config/database.yml` and enter your MySQL username and password
+5. Create database: `rake db:create`
+6. Create tables: `rake db:migrate`
+7. Seed database: `rake db:seed`
+8. Start the server: `rails s`
+9. Visit http://localhost:3000/ and log in with any of the users defined in the [seeds file](https://github.com/jameshibbard/authentication-with-devise-and-cancancan/blob/master/db/seeds.rb).
 
 ## License
 
