@@ -52,8 +52,8 @@ production:
   primary: &primary_production
     <<: *default
     database: store_production
-    username: store
-    password: <%= ENV["STORE_DATABASE_PASSWORD"] %>
+    username: <%= Rails.application.credentials.dig(:production, :database_user) %>
+    password: <%= Rails.application.credentials.dig(:production, :database_password) %>
   cache:
     <<: *primary_production
     database: store_production_cache
